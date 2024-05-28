@@ -5,10 +5,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myrecipeapp.api.recipeService
-import com.example.myrecipeapp.model.UIState
+import com.example.myrecipeapp.model.Category
 import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
+
+    data class UIState(
+        val loading: Boolean = true,
+        val list: List<Category> = emptyList(),
+        val error: String? = null
+    )
 
     private val _categorieState = mutableStateOf(UIState())
     val categorieState: State<UIState> = _categorieState
